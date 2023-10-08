@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Restaurant List{% endblock %}
+{% block title %}Joke List{% endblock %}
 {% block head %}
     {{ super() }}
     <style>
@@ -41,32 +41,32 @@
   </style>
 {% endblock %}
 {% block content %}
-      <h1>Restaurants</h1>
+      <h1>Jokes</h1>
 
       {% if True %}
           <table class="table">
               <thead>
                   <tr>
-                      <th>Name</th>
-                      <th>Rating</th>
+                      <th>Setup</th>
+                      <th>Punchline</th>
                       <th class="text-end">Details</th>
                   </tr>
               </thead>
               <tbody>
-                  {% for restaurant in restaurants %}
+                  {% for joke in jokes %}
                       <tr>
-                          <td>{{ restaurant.name }}</td>
-                          <td>{% include "star_rating.html" %}</td>
-                          <td class="text-end"><a href="{{ url_for('details', id=restaurant.id) }}" class="btn btn-sm btn-primary">Details</a></td>
+                          <td>{{ joke.setup }}</td>
+                          <td>{{ joke.punchline }}</td>
+                          <td class="text-end"><a href="{{ url_for('details', id=joke.id) }}" class="btn btn-sm btn-primary">Details</a></td>
                       </tr>
                   {% endfor %}
               </tbody>
           </table>
       {% else %}
-          <p>No restaurants exist.  Select Add new restaurant to add one.</p>
+          <p>No Joke exist.  Select Fetch new Joke to add one.</p>
       {% endif %}
 
       <div class="d-flex justify-content-end">
-              <a href="{{ url_for('create_restaurant') }}" class="btn btn-success px-4 gap-3">Add new restaurant</a>
+              <a href="{{ url_for('add_joke') }}" class="btn btn-success px-4 gap-3">Fetch New Joke</a>
       </div>
 {% endblock %}
